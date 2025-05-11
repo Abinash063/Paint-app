@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  background-color: #3158c3;
+  margin: 0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #f0f4ff, #dfe9f3);
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #4a4aff;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.Menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.432);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.control label {
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.buttons button {
+  background-color: #4a4aff;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.buttons button:hover {
+  background-color: #3434d3;
+}
+
+canvas.canvas {
+  width: 100%;
+  max-width: 1000px;
+  height: 600px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  touch-action: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .Menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  canvas.canvas {
+    height: 400px;
+  }
+}   
