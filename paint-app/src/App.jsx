@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import Menu from "./Components/Menu";
+import Signup from '../src/pages/signup.jsx'; // Create a Signup component
+import Login from '../src/pages/login.jsx';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 function App() {
+
   const canvasRef = useRef(null);
   const ctxRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -85,36 +89,52 @@ function App() {
     toast.success("Drawing saved!");
   };
 
+
   return (
-    <div className="App">
-      <h1>BrushCraft</h1>
-      <Menu
-        setLineColor={setLineColor}
-        setLineWidth={setLineWidth}
-        setLineOpacity={setLineOpacity}
-        shape={shape}
-        setShape={setShape}
-        clearCanvas={clearCanvas}
-        saveCanvas={saveCanvas}
-      />
-      <canvas
-        ref={canvasRef}
-        onMouseDown={startDrawing}
-        onMouseUp={endDrawing}
-        onMouseMove={draw}
-        onTouchStart={(e) =>
-          startDrawing({ nativeEvent: e.touches[0] })
-        }
-        onTouchMove={(e) =>
-          draw({ nativeEvent: e.touches[0] })
-        }
-        onTouchEnd={(e) =>
-          endDrawing({ nativeEvent: e.changedTouches[0] })
-        }
-        className="canvas"
-      />
-      <ToastContainer />
-    </div>
+      <Router>
+        {/* Navbar */}
+        <nav className="bg-gray-800 text-white p-4">
+          <ul className="flex space-x-4 justify-end">
+            <li>
+              <Link to="/signup" className="hover:text-gray-300">Sign Up</Link>
+            </li>
+            <li>
+              <Link to="/login" className="hover:text-gray-300">Login</Link>
+            </li>
+          </ul>
+        </nav>
+    
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+    
+          {/* Canvas and Menu only on the root ("/") route */}
+          <Route path="/" element={
+            <>
+              <Menu
+                setLineColor={setLineColor}
+                setLineWidth={setLineWidth}
+                setLineOpacity={setLineOpacity}
+                shape={shape}
+                setShape={setShape}
+                clearCanvas={clearCanvas}
+                saveCanvas={saveCanvas}
+              />
+              <canvas
+                ref={canvasRef}
+                onMouseDown={startDrawing}
+                onMouseUp={endDrawing}
+                onMouseMove={draw}
+                onTouchStart={(e) => startDrawing({ nativeEvent: e.touches[0] })}
+                onTouchMove={(e) => draw({ nativeEvent: e.touches[0] })}
+                onTouchEnd={(e) => endDrawing({ nativeEvent: e.changedTouches[0] })}
+                className="canvas"
+              />
+              <ToastContainer />
+            </>
+          } />
+        </Routes>
+      </Router>
   );
 }
 

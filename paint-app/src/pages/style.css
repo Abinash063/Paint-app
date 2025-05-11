@@ -1,0 +1,60 @@
+/* src/styles.css */
+
+/* Style for the form container */
+form {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the form title */
+h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+/* Style for the input fields */
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Input fields focus effect */
+input:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Style for the submit button */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #45a049;
+}
+
+/* Style for the form inputs (for error handling or other styling needs) */
+input:invalid {
+  border-color: red;
+}
